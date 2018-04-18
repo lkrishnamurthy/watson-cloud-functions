@@ -221,7 +221,7 @@
          "previous_sibling":null
       }
    ],
-   "workspace_id":"{WORKSPACE_ID}",
+   "workspace_id":"{ YOUR WATSON ASSISTANT WORKSPACE_ID}",
    "counterexamples":[
 
    ],
