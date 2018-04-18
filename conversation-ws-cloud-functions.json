@@ -1,0 +1,229 @@
+{
+   "name":"TWC - Cloud Functions",
+   "intents":[
+      {
+         "intent":"daily_forecast",
+         "examples":[
+            {
+               "text":"Forecast today for Austin?"
+            },
+            {
+               "text":"How is the weather today in Boston?"
+            },
+            {
+               "text":"Weather forecast today for New York"
+            },
+            {
+               "text":"What is in store for weather today for San Francisco?"
+            },
+            {
+               "text":"What is the forecast today for Dallas?"
+            },
+            {
+               "text":"What is the weather forecast  for Miami?"
+            },
+            {
+               "text":"What is the weather forecast for Boston MA"
+            }
+         ],
+         "description":"Intent to determining daily forecasts"
+      },
+      {
+         "intent":"rain_forecast",
+         "examples":[
+            {
+               "text":"what is the rain forecast for Denver"
+            },
+            {
+               "text":"rain forecast for $location"
+            }
+         ],
+         "description":""
+      }
+   ],
+   "entities":[
+      {
+         "entity":"sys-location",
+         "values":[
+
+         ],
+         "metadata":null,
+         "description":null
+      },
+      {
+         "entity":"sys-date",
+         "values":[
+
+         ],
+         "metadata":null,
+         "description":null
+      },
+      {
+         "entity":"sys-time",
+         "values":[
+
+         ],
+         "metadata":null,
+         "description":null
+      }
+   ],
+   "language":"en",
+   "metadata":{
+      "api_version":{
+         "major_version":"v1",
+         "minor_version":"2017-05-26"
+      }
+   },
+   "description":"Demo using Dialog and TWC API using cloud functions.",
+   "dialog_nodes":[
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "<? $locationDetails.location.address.get(0) ?>"
+               ]
+            }
+         },
+         "parent":"node_2_1523983374349",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$locationDetails.cloud_functions_call_error == null",
+         "description":null,
+         "dialog_node":"node_1_1523996048675",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"Anything else",
+         "output":{
+            "text":{
+               "values":[
+                  "I didn't understand. You can try rephrasing.",
+                  "Can you reword your statement? I'm not understanding.",
+                  "I didn't get your meaning."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"Anything else",
+         "previous_sibling":"node_2_1523983374349"
+      },
+      {
+         "type":"standard",
+         "title":"Forecast",
+         "output":{
+
+         },
+         "parent":null,
+         "actions":[
+            {
+               "name":"/l.krishna@us.ibm.com_dev/wa_cloud_functions/invoke_weather",
+               "type":"server",
+               "parameters":{
+                  "key":"a45d4b384dc84ac2708475fdb1df2e65",
+                  "location":"<? input.text ?>"
+               },
+               "credentials":"$private.mycreds",
+               "result_variable":"context.locationDetails"
+            }
+         ],
+         "context":{
+            "private":{
+               "mycreds":{
+                  "user":"3209eafb-9bf1-4eed-950c-01e78135ada0",
+                  "password":"Q60njhgPughsojfAJFRIBSA4EYa8hrnZVukAFxQF5cj2d4GabnsKr1D1t8IN9dxb"
+               }
+            }
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"#daily_forecast",
+         "description":null,
+         "dialog_node":"node_1_1523940752270",
+         "previous_sibling":"Welcome"
+      },
+      {
+         "type":"standard",
+         "title":"Location Entity",
+         "output":{
+
+         },
+         "parent":null,
+         "actions":[
+            {
+               "name":"/{cloud function host}/wa_cloud_functions/invoke_weather",
+               "type":"server",
+               "blocking":"true",
+               "parameters":{
+                  "key":"{APIKey for Weather}",
+                  "location":"<? @sys-location.literal ?>"
+               },
+               "credentials":"$private.mycreds",
+               "result_variable":"context.locationDetails"
+            }
+         ],
+         "context":{
+            "private":{
+               "mycreds":{
+                  "user":"{username for your cloud function action}",
+                  "password":"{password for your cloud function action}"
+               }
+            }
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"condition",
+            "dialog_node":"node_1_1523996048675"
+         },
+         "conditions":"@sys-location",
+         "description":null,
+         "dialog_node":"node_2_1523983374349",
+         "previous_sibling":"node_1_1523940752270"
+      },
+      {
+         "type":"standard",
+         "title":"Welcome",
+         "output":{
+            "text":{
+               "values":[
+                  "Hello. How can I help you?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"welcome",
+         "description":null,
+         "dialog_node":"Welcome",
+         "previous_sibling":null
+      }
+   ],
+   "workspace_id":"ce0e2ae7-70a0-4260-b7ec-64e2233918d7",
+   "counterexamples":[
+
+   ],
+   "learning_opt_out":false
+}
