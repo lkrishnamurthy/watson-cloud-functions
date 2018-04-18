@@ -133,7 +133,7 @@
                "name":"/l.krishna@us.ibm.com_dev/wa_cloud_functions/invoke_weather",
                "type":"server",
                "parameters":{
-                  "key":"a45d4b384dc84ac2708475fdb1df2e65",
+                  "key":"{API key for Weather API}",
                   "location":"<? input.text ?>"
                },
                "credentials":"$private.mycreds",
@@ -143,8 +143,8 @@
          "context":{
             "private":{
                "mycreds":{
-                  "user":"3209eafb-9bf1-4eed-950c-01e78135ada0",
-                  "password":"Q60njhgPughsojfAJFRIBSA4EYa8hrnZVukAFxQF5cj2d4GabnsKr1D1t8IN9dxb"
+                  "user":"{Cloud function action username}",
+                  "password":"{Cloud function action password}"
                }
             }
          },
@@ -221,7 +221,7 @@
          "previous_sibling":null
       }
    ],
-   "workspace_id":"ce0e2ae7-70a0-4260-b7ec-64e2233918d7",
+   "workspace_id":"{WORKSPACE_ID}",
    "counterexamples":[
 
    ],
