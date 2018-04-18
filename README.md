@@ -27,3 +27,7 @@ given a city or state or both.
 - Enter a city name (such as Boston) or city name and state (Albany NY)
 - You wil get a response from the Weather location API now with a corresponding city, state and country name.
 - Using this you can invoke other Weather APIs such as the daily forecast or weekly forecast.
+
+## References.
+- [Progammatic functions within Dialog](https://console.bluemix.net/docs/services/conversation/dialog-actions.html#dialog-actions)
+- [DeveloperWorkds Recipe - Watson Conversation & IBM Cloud Functions together](https://developer.ibm.com/recipes/tutorials/watson-conversation-ibm-cloud-functions-to-do-a-longtail-chatbot/)
