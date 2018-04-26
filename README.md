@@ -14,7 +14,7 @@ given a city or state or both.
 - Import the conversation workspace using the conversation-ws-cloud-function.json provided into Watson Assistant
 - Create a new action using your cloud function instance and copy and paste the contents from weather.js
 - Define two input parameters for key and location in cloud functions.
-- Copy and paste the user id and password for your action from the 'endpoint' link
+- Copy and paste the user id and password for your action from the cloud functions 'endpoint' link
 - You should be all set to test it
 
 ## Running the demo.
