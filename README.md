@@ -6,7 +6,7 @@ given a city or state or both.
 
 ## Pre-requistes
 - Watson Assistant instance created in IBM Cloud
-- IBM Cloud Functions instance created in IBM Cloud
+- IBM Cloud Functions instance created in IBM Cloud. For more information on how to setup a Cloud functions instance refer to [IBM Cloud Functions](https://console.bluemix.net/openwhisk/)
 - Optionally, install IBM Cloud CLI for Cloud Functions if you are going to use command line.
 
 ## Install Steps.
@@ -20,7 +20,7 @@ given a city or state or both.
 ## Running the demo.
 
 - Get an API Key from weather.api APIs or use [IBM Cloud weather insights Api](https://console.bluemix.net/docs/services/Weather/weather_rest_apis.html#rest_apis)
-- Past the Weather API key into the cloud function action
+- Copy & Paste the Weather API key into the cloud function action.
 - Use the "Location" entity check node in the dialog tab and paste the userid and password within the context parameters for the response.
 - Wait till the training is complete
 - Use the "Try it" option inside Watson Assistant to now test your scenario
